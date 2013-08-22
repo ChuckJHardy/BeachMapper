@@ -16,8 +16,6 @@ var Mapper = (function ($) {
     this.global = buildVector(this).append("g");
 
     configuration(this);
-
-    buildVector(this);
   }
 
   function configuration(_self) {
@@ -41,8 +39,8 @@ var Mapper = (function ($) {
     return d3.geo.path().projection(projection(_self));
   }
 
-  function selectAllPath(_self, global, topology) {
-    global.selectAll("path")
+  function selectAllPath(_self, topology) {
+    _self.global.selectAll("path")
       .data(topojson.object(topology, topology.objects.countries).geometries)
       .enter()
       .append("path")
@@ -50,9 +48,9 @@ var Mapper = (function ($) {
   }
 
   // Load and display the cities
-  function csv(_self, global) {
-    d3.csv("support/cities.csv", function(error, data) {
-      global.selectAll("circle")
+  function csv(_self) {
+    d3.csv(_self.options.cities, function(error, data) {
+      _self.global.selectAll("circle")
       .data(data)
       .enter()
       .append("circle")
@@ -65,24 +63,10 @@ var Mapper = (function ($) {
 
   // Load and display the World
   function mapVectors(_self) {
-    d3.json("support/world-110m2.json", function(error, topology) {
-      csv(_self, _self.global);
-      selectAllPath(_self, _self.global, topology);
+    d3.json(_self.options.worldJson, function(error, topology) {
+      csv(_self);
+      selectAllPath(_self, topology);
     });
-  }
-
-  // Zoom and pan
-  function zoom(_self, global) {
-    return d3.behavior.zoom()
-      .on("zoom",function() {
-        global.attr("transform","translate("+ 
-          d3.event.translate.join(",")+")scale("+d3.event.scale+")");
-        global.selectAll("circle")
-        .attr("d", path(_self).projection(projection(_self)));
-      global.selectAll("path")  
-        .attr("d", path(_self).projection(projection(_self))); 
-
-      });
   }
 
   return Mapper;
