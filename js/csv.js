@@ -5,10 +5,10 @@ Mapper.CSV = (function ($) {
     cities : "support/cities.csv"
   };
 
-  function CSV(_mapper, projection, options) {
+  function CSV(_loader, projection, options) {
     this.options = $.extend({}, defaultOptions, options);
 
-    this._mapper = _mapper;
+    this._loader = _loader;
     this.projection = projection;
   }
 
@@ -17,7 +17,7 @@ Mapper.CSV = (function ($) {
       var _self = this;
 
       d3.csv(_self.options.cities, function(error, data) {
-        _self._mapper.global.selectAll("circle")
+        _self._loader._mapper.global.selectAll("circle")
         .data(data)
         .enter()
         .append("circle")
@@ -35,32 +35,3 @@ Mapper.CSV = (function ($) {
 
   return CSV;
 }(jQuery));
-
-// Mapper.JSON = (function ($) {
-//   "use strict";
-
-//   var defaultOptions = {
-//     json : "support/world-110m2.json"
-//   };
-
-//   function JSON(_mapper, projection, options) {
-//     this.options = $.extend({}, defaultOptions, options);
-
-//     this._mapper = _mapper;
-//     this.projection = projection;
-//   }
-
-//   JSON.prototype = {
-//     load: function () {
-//       var _self = this;
-
-//       d3.json(_self.options.json, function(error, topology) {
-//         new Mapper.CSV(_self._mapper, _self.projection, {}).load();
-
-//         return topology;
-//       });
-//     }
-//   };
-
-//   return JSON;
-// }(jQuery));
