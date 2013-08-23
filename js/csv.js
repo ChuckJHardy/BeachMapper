@@ -23,7 +23,7 @@ Mapper.CSV = (function ($) {
         .append("circle")
         .attr("cx", function(d) { return projection(_self, d)[0]; })
         .attr("cy", function(d) { return projection(_self, d)[1]; })
-        .attr("r", 5)
+        .attr("r", 2)
         .style("fill", "red");
       });
     }

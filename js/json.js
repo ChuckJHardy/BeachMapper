@@ -5,7 +5,7 @@ Mapper.JSON = (function ($) {
     center : { x : 0, y : 45 },
     scale  : 307,
     rotate : { x : 35, y : 0 },
-    json   : "support/world-110m2.json"
+    json   : "support/world-v2.json"
   };
 
   function JSON(_mapper, options) {
@@ -22,6 +22,14 @@ Mapper.JSON = (function ($) {
         new Mapper.CSV(_self, projection(_self), {}).load();
         selectAllPath(_self, topology);
       });
+
+      d3.select("svg").append("line")
+        .attr("x1", 660)
+        .attr("y1", 180)
+        .attr("x2", 1190)
+        .attr("y2", 500)
+        .attr("stroke-width", 0.5)
+        .attr("stroke", "white");
     }
   };
 

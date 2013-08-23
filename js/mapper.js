@@ -28,7 +28,7 @@ var Mapper = (function ($) {
 
 $(document).ready(function () {
   new Mapper({
-    width  : document.width,
-    height : document.height
+    width  : $(document).width(),
+    height : $(document).height()
   });
 });
