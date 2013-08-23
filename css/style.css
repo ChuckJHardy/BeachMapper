@@ -1,10 +1,11 @@
 body {
   margin: 0px;
   padding: 0px;
+  background: #000000;
 }
 
 path {
-  stroke: white;
+  stroke: #242424;
   stroke-width: 0.25px;
-  fill: grey;
+  fill: #0F0F0F;
 }
