@@ -3,7 +3,7 @@
     "name"   : "onthebeach", 
     "long"   : -2.2235922, 
     "lat"    : 53.4722454, 
-    "radius" : 5, 
+    "radius" : 1, 
     "color"  : "blue" 
   }
 ]

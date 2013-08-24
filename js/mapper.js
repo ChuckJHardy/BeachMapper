@@ -26,6 +26,12 @@ var Mapper = (function ($) {
     new Mapper.World(_self, {}).load();
     new Mapper.StaticLocations(_self, {}).load();
     new Mapper.PointFinder(_self).report();
+
+    $.getJSON("support/searches.json", function(searches) {
+      _.each(searches, function(search) {
+        new Mapper.Stamp(_self, search).search();
+      });
+    });
   }
 
   function projection(_self) {
