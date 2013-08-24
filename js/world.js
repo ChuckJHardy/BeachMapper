@@ -2,10 +2,7 @@ Mapper.World = (function ($) {
   "use strict";
 
   var defaultOptions = {
-    center : { x : 0, y : 45 },
-    scale  : 307,
-    rotate : { x : 35, y : 0 },
-    json   : "support/world.json"
+    json : "support/world.json"
   };
 
   function World(_mapper, options) {
