@@ -8,19 +8,38 @@ var Mapper = (function ($) {
 
   function Mapper(options) {
     this.options = $.extend({}, defaultOptions, options);
-    this.global = buildVector(this).append("g");
+    this.svg = svg(this);
+    this.projection = projection(this);
+    this.graticule = graticule(this);
+    this.path = path(this);
 
     configuration(this);
   }
 
   function configuration(_self) {
-    new Mapper.JSON(_self, {}).load();
+    buildWorld(_self);
   }
 
-  function buildVector(_self) {
+  function buildWorld(_self) {
+    new Mapper.World(_self, {}).load();
+  }
+
+  function projection(_self) {
+    return d3.geo.kavrayskiy7();
+  }
+
+  function graticule(_self) {
+    return d3.geo.graticule();
+  }
+
+  function svg(_self) {
     return d3.select("body").append("svg")
       .attr("width", _self.options.width)
       .attr("height", _self.options.height);
+  }
+
+  function path(_self) {
+    return d3.geo.path().projection(_self.projection);
   }
 
   return Mapper;

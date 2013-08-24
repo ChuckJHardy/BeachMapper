@@ -1,12 +1,26 @@
 body {
   margin: 0px;
   padding: 0px;
-  background: #000000;
+  background: #fff;
   overflow: hidden;
 }
 
-path {
-  stroke: #242424;
-  stroke-width: 0.25px;
-  fill: #0F0F0F;
+.country {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: .5px;
+  stroke-linejoin: round;
+}
+
+.graticule {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .3;
+  stroke-width: .5px;
+}
+
+.graticule.outline {
+  stroke: #333;
+  stroke-opacity: 1;
+  stroke-width: 1.5px;
 }
