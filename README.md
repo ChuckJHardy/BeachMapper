@@ -1,6 +1,6 @@
 # Melnitz Pure
 
-A pure javascript implimentation of the D3.js World Map topology.
+A pure javascript implementation of the D3.js World Map topology.
 
 ## Installation
 
