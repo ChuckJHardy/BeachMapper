@@ -5,8 +5,9 @@ body {
   overflow: hidden;
 }
 
-path {
+.country {
   stroke: #242424;
   stroke-width: 0.25px;
+  stroke-linejoin: round;
   fill: #0F0F0F;
 }
